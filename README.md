@@ -20,8 +20,8 @@ _SQLite database integration plugin:_ **1.2.2**
 
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/trafex/wordpress.svg)](https://hub.docker.com/r/trafex/wordpress/)
-![nginx 1.20](https://img.shields.io/badge/nginx-1.22-brightgreen.svg)
-![php 8.0](https://img.shields.io/badge/php-8.0-brightgreen.svg)
+![nginx 1.22](https://img.shields.io/badge/nginx-1.22-brightgreen.svg)
+![php 8.1](https://img.shields.io/badge/php-8.1-brightgreen.svg)
 ![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 
 ## Usage
