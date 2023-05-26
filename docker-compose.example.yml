@@ -1,0 +1,20 @@
+version: '3.5'
+
+services:
+  wordpress:
+    container_name: wp-com-mdbraber-wordpress
+    # image: mdbraber/wordpress-nginx-sqlite
+    build: .
+    volumes:
+      - "site-data:/var/www/wp-content"
+    environment:
+      WORDPRESS_SITE_URL: http://wordpress.example.com
+      FS_METHOD: direct
+      # For debugging only:
+      #WP_DEBUG: "true"
+      #WP_DEBUG_DISPLAY: "true"
+    ports:
+      - "80:80"
+
+volumes:
+  site-data:
