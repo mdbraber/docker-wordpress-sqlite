@@ -6,7 +6,6 @@ Lightweight WordPress container with [SQLite database integration](https://githu
 _WordPress version currently installed:_ **6.2.2**
 _SQLite database integration plugin:_ **1.2.2**
 
-* Used in production for many sites, making it stable, tested and up-to-date
 * Optimized for 100 concurrent users
 * Optimized to only use resources when there's traffic (by using PHP-FPM's ondemand PM)
 * Works with Amazon Cloudfront or CloudFlare as SSL terminator and CDN
