@@ -1,9 +1,10 @@
 
 # WordPress Docker Container
 
-Lightweight WordPress container with Nginx 1.22 & PHP-FPM 8.0 based on Alpine Linux.
+Lightweight WordPress container with [SQLite database integration](https://github.com/WordPress/sqlite-database-integration), Nginx 1.22 and PHP-FPM 8.1 based on Alpine Linux.
 
-_WordPress version currently installed:_ **6.1.1**
+_WordPress version currently installed:_ **6.2.2**
+_SQLite database integration plugin:_ **1.2.2**
 
 * Used in production for many sites, making it stable, tested and up-to-date
 * Optimized for 100 concurrent users
@@ -14,22 +15,22 @@ _WordPress version currently installed:_ **6.1.1**
 * Small Docker image size (+/-90MB)
 * Uses PHP 8.0 for better performance, lower cpu usage & memory footprint
 * Can safely be updated without losing data
+* [SQLite database integration](https://github.com/WordPress/sqlite-database-integration) (no MySQL needed to get started; also not installed!)
 * Fully configurable because wp-config.php uses the environment variables you can pass as an argument to the container
+
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/trafex/wordpress.svg)](https://hub.docker.com/r/trafex/wordpress/)
 ![nginx 1.20](https://img.shields.io/badge/nginx-1.22-brightgreen.svg)
 ![php 8.0](https://img.shields.io/badge/php-8.0-brightgreen.svg)
 ![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 
-## [![Trafex Consultancy](https://timdepater.com/logo/mini-logo.png)](https://timdepater.com?mtm_campaign=github)
-I can help you with [Containerization, Kubernetes, Monitoring, Infrastructure as Code and other DevOps challenges](https://timdepater.com/?mtm_campaign=github).
-
 ## Usage
-See [docker-compose.yml](https://github.com/TrafeX/docker-wordpress/blob/master/docker-compose.yml) how to use it in your own environment.
+See [docker-compose.example.yml](https://github.com/mdbraber/docker-wordpress/blob/master/docker-compose.example.yml) how to use it in your own environment.
 
     docker-compose up
 
 Or
+    docker build -t mdbraber/docker-wordpress-sqlite .
 
     docker run -d -p 80:80 -v /local/folder:/var/www/wp-content \
     -e "DB_HOST=db" \
@@ -37,7 +38,7 @@ Or
     -e "DB_USER=wp" \
     -e "DB_PASSWORD=secret" \
     -e "FS_METHOD=direct" \
-    trafex/wordpress
+    mdbraber/docker-wordpress-sqlite
 
 ### WP-CLI
 
@@ -48,7 +49,5 @@ This image includes [wp-cli](https://wp-cli.org/) which can be used like this:
 
 ## Inspired by
 
-* https://hub.docker.com/_/wordpress/
-* https://codeable.io/wordpress-developers-intro-to-docker-part-two/
-* https://github.com/TrafeX/docker-php-nginx/
-* https://github.com/etopian/alpine-php-wordpress
+* https://github.com/TrafeX/docker-wordpress
+
