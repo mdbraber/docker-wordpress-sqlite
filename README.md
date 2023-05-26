@@ -28,8 +28,8 @@ See [docker-compose.example.yml](https://github.com/mdbraber/docker-wordpress/bl
     docker-compose up
 
 Or
-    docker build -t mdbraber/docker-wordpress-sqlite .
 
+    docker build -t mdbraber/docker-wordpress-sqlite .
     docker run -d -p 80:80 -v /local/folder:/var/www/wp-content \
     -e "DB_HOST=db" \
     -e "DB_NAME=wordpress" \
