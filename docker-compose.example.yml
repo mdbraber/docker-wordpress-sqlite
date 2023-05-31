@@ -1,20 +1,24 @@
 version: '3.5'
 
+name: wordpress-${DOMAIN}
+
 services:
   wordpress:
-    container_name: wp-com-mdbraber-wordpress
-    # image: mdbraber/wordpress-nginx-sqlite
+    container_name: wordpress-${DOMAIN}
     build: .
     volumes:
-      - "site-data:/var/www/wp-content"
+      - /var/www/${DOMAIN}/wp-content:/var/www/wp-content
     environment:
-      WORDPRESS_SITE_URL: http://wordpress.example.com
+      WORDPRESS_SITE_URL: https://${DOMAIN}.${DOMAIN_TLD}
       FS_METHOD: direct
-      # For debugging only:
-      #WP_DEBUG: "true"
-      #WP_DEBUG_DISPLAY: "true"
-    ports:
-      - "80:80"
+    networks:
+      - caddy
+    labels:
+      caddy_0: ${DOMAIN}.${DOMAIN_TLD}
+      caddy_0.reverse_proxy: "{{upstreams 80}}"
+      caddy_1: www.${DOMAIN}.${DOMAIN_TLD} ${DOMAIN_ALIASES}
+      caddy_1.redir: https://${DOMAIN}.${DOMAIN_TLD}
 
-volumes:
-  site-data:
+networks:
+  caddy:
+    external: true
