@@ -1,5 +1,7 @@
 <?php
 
+define('WP_CACHE', true);
+define('WPCACHEHOME', '/var/www/wp-content/plugins/wp-super-cache/');
 define('WP_CONTENT_DIR', '/var/www/wp-content');
 
 $table_prefix  = getenv('TABLE_PREFIX') ?: 'wp_';
